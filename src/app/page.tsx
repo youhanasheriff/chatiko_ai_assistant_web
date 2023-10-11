@@ -1,5 +1,12 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from 'next/image';
+import type { Metadata } from 'next';
+
+import styles from './page.module.scss';
+
+export const metadata: Metadata = {
+  title: 'Chatiko AI - Your virtual companion',
+  description: 'Chatiko AI - Your virtual companion',
+};
 
 export default function Home() {
   return (
@@ -91,5 +98,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
