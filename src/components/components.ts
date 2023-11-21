@@ -1,5 +1,7 @@
 import WelcomeTitle from './WelcomeTitle';
 import TextInputField from './forms/TextInputField';
+import Button from './forms/Button';
+import Navbar from './Navbar';
 
 export default {
   Texts: {
@@ -7,5 +9,9 @@ export default {
   },
   Forms: {
     TextInputField,
+    Button,
+  },
+  Layout: {
+    Navbar,
   },
 };

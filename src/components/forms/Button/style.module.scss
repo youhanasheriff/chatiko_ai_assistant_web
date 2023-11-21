@@ -1,0 +1,29 @@
+.button {
+  box-shadow:
+    inset 9px 9px 18px var(--card-border-hex),
+    inset -9px -9px 18px var(--foreground-hex);
+  min-width: 350px;
+  padding: 0.6rem 1rem;
+  transition: all 0.2s ease-in-out;
+  background: var(--foreground-hex);
+  background-color: var(--foreground-hex);
+  cursor: pointer;
+  border: none;
+  border-radius: 64px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--background-end-hex);
+
+  & span {
+    position: relative;
+    top: 2px;
+  }
+
+  &:hover {
+    box-shadow:
+      inset 9px 9px 18px var(--background-end-hex),
+      inset -9px -9px 18px var(--callout-hex);
+    background-color: var(--background-end-hex);
+    color: var(--foreground-hex);
+  }
+}

@@ -7,18 +7,25 @@ import constants from '@/constants/constants';
 
 import style from '@/styles/auth/auth.module.scss';
 import components from '@/components/components';
-import Link from 'next/link';
+import AuthForm from './(components)/AuthForm';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 
 const { WelcomeTitle } = components.Texts;
-const { TextInputField } = components.Forms;
 
 export const metadata: Metadata = {
-  title: 'Sign In | CHatiko AI - Chatbot as your friend',
+  title: 'Sign In | Chatiko AI - Chatbot as your friend',
   description:
     'Sign in to your account | CHatiko AI - Chatbot as your friend | Sign in to your account.',
 };
 
-const Home: NextPage = () => {
+const Home: NextPage = async () => {
+  const session = await getServerSession();
+
+  if (session && session.user) {
+    redirect('/');
+  }
+
   return (
     <section className={style.page}>
       <Head>
@@ -28,28 +35,10 @@ const Home: NextPage = () => {
       <main className={style.main}>
         <h1>Sign In</h1>
         <div className={style.content}>
-          <form className={style.form}>
+          <div className={style.form}>
             <WelcomeTitle />
-            <div className={style.box}>
-              <TextInputField
-                label="Email"
-                name="email"
-                placeholder="Enter your email"
-              />
-              <br />
-              <br />
-              <TextInputField
-                label="Password"
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-              />
-              <br />
-              <Link href="/auth/forgot-password" className={style.forgot}>
-                Forgot Password?
-              </Link>
-            </div>
-          </form>
+            <AuthForm />
+          </div>
           <div className={style.laptop}>
             <Image src={constants.IMAGES.laptop} alt="Laptop" />
           </div>
