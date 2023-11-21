@@ -1,7 +1,7 @@
 import WelcomeTitle from './WelcomeTitle';
 import TextInputField from './forms/TextInputField';
 import Button from './forms/Button';
-import Navbar from './Navbar';
+import Navbar from './layouts/Navbar';
 
 export default {
   Texts: {

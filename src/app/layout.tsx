@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 import components from '@/components/components';
 
 import '@/styles/globals.scss';
+import { getServerSession } from 'next-auth';
 
 export const metadata: Metadata = {
   title: 'Chatiko AI - Your virtual companion | Home',
@@ -21,16 +22,28 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <aside>Side bar</aside>
+  const session = await getServerSession();
 
-        <main>
+  let child = null;
+
+  if (!session || !session.user) {
+    child = children;
+  } else {
+    child = (
+      <>
+        <aside data-authentication="true">Side bar</aside>
+
+        <main data-authentication="true">
           <Navbar />
           {children}
         </main>
-      </body>
+      </>
+    );
+  }
+
+  return (
+    <html lang="en">
+      <body className={inter.className}>{child}</body>
     </html>
   );
 }
