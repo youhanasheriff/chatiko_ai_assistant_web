@@ -1,0 +1,23 @@
+.label {
+  height: 65px;
+  width: 273px;
+
+  .welcome-back-to {
+    color: var(--foreground-hex);
+    font-family: 'Roboto Mono-Medium', Helvetica;
+    font-size: large;
+    font-weight: 400;
+    height: 65px;
+    letter-spacing: 0;
+    line-height: 19px;
+    text-align: center;
+    width: 273px;
+  }
+  .text-wrapper {
+    font-weight: 500;
+  }
+  .span {
+    font-family: 'Roboto-Bold', Helvetica;
+    font-weight: 700;
+  }
+}

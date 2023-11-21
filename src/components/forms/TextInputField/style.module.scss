@@ -1,0 +1,37 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 66px;
+
+  label {
+    font-family: 'Roboto Mono-Medium', Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    font-size: medium;
+    line-height: 14px;
+    text-align: left;
+    color: var(--foreground-hex);
+    margin-bottom: 8px;
+  }
+
+  input {
+    height: 100%;
+    width: 100%;
+    padding: 16px 12px;
+    color: var(--foreground-hex);
+    font-family: 'Roboto Mono-Medium', Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 14px;
+    text-align: left;
+    outline: none;
+    border: none;
+    border-radius: 44px;
+    background: #272727;
+    box-shadow: inset 22px 22px 53px #1c1c1c;
+    transition: all 0.2s ease-in-out;
+  }
+}
