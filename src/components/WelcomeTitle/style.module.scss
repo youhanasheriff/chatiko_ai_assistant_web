@@ -1,5 +1,8 @@
 .welcome-back-to {
+  display: flex;
+  justify-content: center;
   color: var(--foreground-hex);
+
   font-family: 'Roboto Mono-Medium', Helvetica;
   font-size: large;
   font-weight: 400;
@@ -8,11 +11,23 @@
   line-height: 19px;
   text-align: center;
   width: 100%;
+
+  .text-wrapper {
+    font-weight: 500;
+  }
+  .span {
+    margin-left: 8px;
+    font-family: 'Roboto-Bold', Helvetica;
+    font-weight: 700;
+  }
 }
-.text-wrapper {
-  font-weight: 500;
-}
-.span {
-  font-family: 'Roboto-Bold', Helvetica;
-  font-weight: 700;
+
+@media screen and (max-width: 768px) {
+  .welcome-back-to {
+    flex-direction: column;
+  }
+
+  .span {
+    margin: 8px 0 16px 0 !important;
+  }
 }

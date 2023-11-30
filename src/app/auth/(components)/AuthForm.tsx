@@ -15,6 +15,7 @@ function AuthForm() {
   const [formType, setFormType] = useState<'signIn' | 'signUp'>('signIn'); // ['signIn', 'signUp']
 
   const emailRef = useRef<HTMLInputElement>(null);
+  const confirmEmailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const signInWithEmailAndPassword = async () => {
@@ -41,7 +42,17 @@ function AuthForm() {
 
   const signUpWithEmailAndPassword = async () => {
     const email = emailRef.current?.value;
+    const confirmEmail = confirmEmailRef.current?.value;
     const password = passwordRef.current?.value;
+
+    if (email !== confirmEmail) {
+      toast.warn(`Email and confirm email must be same.`, {
+        autoClose: 2000,
+        theme: 'dark',
+      });
+
+      return;
+    }
 
     if (!email || !password) {
       toast.warn(`Please enter valid email and password.`, {
@@ -52,27 +63,13 @@ function AuthForm() {
       return;
     }
 
-    const response = await fetch('/api/auth/signup', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    signIn('credentials', {
+      email,
+      password,
+      formType: formType,
+      redirect: true,
+      callbackUrl: '/',
     });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      toast.error(data.message, {
-        autoClose: 2000,
-        theme: 'dark',
-      });
-    } else {
-      toast.success(data.message, {
-        autoClose: 2000,
-        theme: 'dark',
-      });
-    }
   };
 
   const renderText = () => {
@@ -142,7 +139,14 @@ function AuthForm() {
         </>
       )}
       <br />
-      <Button label="Sign In" onClick={signInWithEmailAndPassword} />
+      <Button
+        label={formType === 'signIn' ? 'Sign In' : 'Sign Up'}
+        onClick={
+          formType === 'signIn'
+            ? signInWithEmailAndPassword
+            : signUpWithEmailAndPassword
+        }
+      />
       <br />
       <HorizontalLine text="OR" />
       <Button
