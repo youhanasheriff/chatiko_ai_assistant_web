@@ -1,6 +1,5 @@
 import { Metadata, NextPage } from 'next';
 
-import Head from 'next/head';
 import Image from 'next/image';
 
 import constants from '@/constants/constants';
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
     'Sign in to your account | CHatiko AI - Chatbot as your friend | Sign in to your account.',
 };
 
-const Home: NextPage = async () => {
+const Auth: NextPage = async () => {
   const session = await getServerSession();
 
   if (session && session.user) {
@@ -28,10 +27,6 @@ const Home: NextPage = async () => {
 
   return (
     <section className={style.page}>
-      <Head>
-        <title>Sign In</title>
-        <meta name="description" content="Sign in to your account" />
-      </Head>
       <main className={style.main}>
         <h1>Sign In</h1>
         <div className={style.content}>
@@ -48,4 +43,4 @@ const Home: NextPage = async () => {
   );
 };
 
-export default Home;
+export default Auth;

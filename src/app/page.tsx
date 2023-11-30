@@ -11,8 +11,13 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const session = await getServerSession();
+
   if (!session || !session.user) {
     redirect('/auth');
   }
-  return <main className={styles.main}></main>;
+  return (
+    <main className={styles.main}>
+      <h2>Home</h2>
+    </main>
+  );
 }

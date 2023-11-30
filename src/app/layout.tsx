@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: 'Chatiko AI - Your virtual companion | Home',
 };
 
-const { Navbar } = components.Layout;
+const { Navbar } = components.Layouts;
 
 export default async function RootLayout({
   children,
